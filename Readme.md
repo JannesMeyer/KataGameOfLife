@@ -4,4 +4,4 @@
 - 2-3: survival
 - 4-8: death
 
-Any dead cell with exactly three live neighbours becomes a living cell
+Any dead cell with exactly three alive neighbours becomes a living cell
