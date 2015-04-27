@@ -1,5 +1,7 @@
 # KataGameOfLife in JavaScript
 
-Execute the test suite: (automatically installs the dependencies)
+Run the test suite:
 
-	make test
+~~~bash
+make test    # automatically installs the dependencies
+~~~
