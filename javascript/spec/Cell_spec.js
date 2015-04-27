@@ -1,5 +1,5 @@
-var World = require('../src/World.js');
-var Cell = require('../src/Cell.js');
+var World = require('../build/World.js');
+var Cell = require('../build/Cell.js');
 
 describe("Cell", function() {
 

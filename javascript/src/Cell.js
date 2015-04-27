@@ -11,9 +11,7 @@ function Cell(x, y, world) {
  * Counts the number of alive neighbours
  */
 Cell.prototype.getLivingNeighbours = function() {
-  return this.world.getNeighbours(this).filter(function(cell) {
-    return cell.alive;
-  }).length;
+  return this.world.getNeighbours(this).filter(cell => cell.alive).length;
 };
 
 /**
@@ -26,5 +24,5 @@ Cell.prototype.next = function() {
   } else if (!this.alive && neighbours === 3) {
     this.alive = true;
   }
-  return this.alive;
+  return this;
 };
