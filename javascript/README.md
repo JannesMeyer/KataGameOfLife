@@ -1,4 +1,4 @@
-# [KataGameOfLife](http://codingdojo.org/cgi-bin/index.pl?KataGameOfLife) in JavaScript
+# KataGameOfLife in JavaScript
 
 Run the test suite:
 
