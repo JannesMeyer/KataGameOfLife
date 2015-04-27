@@ -1,5 +1,7 @@
-0-1 death
-2-3	survive
-4-8 death
+# [KataGameOfLife](http://codingdojo.org/cgi-bin/index.pl?KataGameOfLife)
 
-Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+- 0-1: death
+- 2-3: survival
+- 4-8: death
+
+Any dead cell with exactly three alive neighbours becomes a living cell
