@@ -46,6 +46,12 @@ World.prototype.toString = function() {
 };
 
 World.prototype.getCell = function(x, y) {
+  if (typeof x !== 'number' || isNaN(x)) {
+    throw new TypeError("The first argument is not a number");
+  }
+  if (typeof y !== 'number' || isNaN(y)) {
+    throw new TypeError("The second argument is not a number");
+  }
   if (x < 0 || x >= this.width ||
       y < 0 || y >= this.height) {
     return undefined;
@@ -53,12 +59,7 @@ World.prototype.getCell = function(x, y) {
   return this.rows[y][x];
 };
 
-World.prototype.getNeighbours = function(cell) {
-  var x = cell.x;
-  var y = cell.y;
-  if (x === undefined || y === undefined) {
-    throw new TypeError("First argument is not a cell");
-  }
+World.prototype.getNeighbours = function({ x, y }) {
   return [
     this.getCell(x - 1, y - 1),
     this.getCell(x,     y - 1),
@@ -72,20 +73,12 @@ World.prototype.getNeighbours = function(cell) {
 };
 
 World.prototype.setState = function(state) {
-  this.rows.forEach(function(row, y) {
-    row.forEach(function(cell, x) {
-      cell.alive = state[y][x];
-    });
-  });
+  this.rows.forEach((row, y) => row.forEach((cell, x) => cell.alive = state[y][x]));
 };
 
 World.prototype.next = function() {
   this.generation++;
-  this.rows.forEach(function(row) {
-    row.forEach(function(cell) {
-      cell.next();
-    });
-  });
+  this.rows.forEach(row => row.forEach(cell => cell.next()));
   return this;
 };
 

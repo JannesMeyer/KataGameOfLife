@@ -17,15 +17,11 @@ Cell.prototype.getLivingNeighbours = function() {
  */
 Cell.prototype.next = function() {
   var neighbours = this.getLivingNeighbours();
-
   if (this.alive && (neighbours < 2 || neighbours > 3)) {
     this.alive = false;
-    return this;
   }
   if (!this.alive && neighbours === 3) {
     this.alive = true;
-    return this;
   }
-
   return this;
 };
