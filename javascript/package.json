@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "Conway's game of life",
   "repository": "JannesMeyer/KataGameOfLife",
-  "main": "src/kata.js",
   "scripts": {
-    "start": "node ./src/kata.js",
-    "test": "./node_modules/.bin/jasmine"
+    "test": "make test"
   },
   "devDependencies": {
     "babel": "^5.1.13",
