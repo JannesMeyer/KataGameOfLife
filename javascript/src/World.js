@@ -12,9 +12,22 @@ export default function World(width, height, generation = 1, initialState) {
 
 World.fromString = function(text) {
   var lines = text.split('\n');
+  if (lines.length < 3) {
+    throw new Error("Input string is not in the correct format");
+  }
+
   var gen = lines[0].match(/^Generation (\d+):$/);
+  if (gen === null) {
+    throw new Error("Couldn't read the generation from the input string");
+  }
+
   var size = lines[1].split(' ').map(Number);
-  var state = lines.slice(2).map(line => line.split('').map(str => str === '*'));
+  if (size.length !== 2) {
+    throw new Error("Couldn't read the dimensions from the input string");
+  }
+
+  var state = lines.slice(2).map(line => line.split('').map(chr => chr === '*'));
+
   return new World(size[1], size[0], Number(gen[1]), state);
 };
 
