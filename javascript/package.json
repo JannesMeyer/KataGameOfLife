@@ -4,11 +4,12 @@
   "description": "Conway's game of life",
   "main": "src/kata.js",
   "scripts": {
-    "test": "jasmine"
+    "start": "node ./src/kata.js",
+    "test": "./node_modules/.bin/jasmine"
   },
-  "author": "Jannes Meyer <jannes.meyer@gmail.com>",
-  "license": "ISC",
   "devDependencies": {
     "jasmine": "^2.2.1"
-  }
+  },
+  "author": "Jannes Meyer <jannes.meyer@gmail.com>",
+  "license": "ISC"
 }
