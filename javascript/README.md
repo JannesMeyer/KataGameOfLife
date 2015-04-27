@@ -3,5 +3,5 @@
 Run the test suite:
 
 ~~~bash
-make test    # automatically installs the dependencies
+make test  # automatically installs dependencies
 ~~~
