@@ -1,11 +1,10 @@
 import Cell from './Cell';
 
-export default function World(width, height, generation, initialState) {
+export default function World(width, height, generation = 1, initialState) {
   this.width = width;
   this.height = height;
-  this.generation = generation || 1;
+  this.generation = generation;
   this.rows = create(height, y => create(width, x => new Cell(x, y, this)));
-
   if (initialState !== undefined) {
     this.setState(initialState);
   }
@@ -14,17 +13,9 @@ export default function World(width, height, generation, initialState) {
 World.fromString = function(text) {
   var lines = text.split('\n');
   var gen = lines[0].match(/^Generation (\d+):$/);
-  var dim = lines[1].split(' ');
-
-  var width = parseInt(dim[1]);
-  var height = parseInt(dim[0]);
-  var generation = parseInt(gen[1]);
-  var state = lines.slice(2).map(function(line) {
-    return line.trim().split('').map(function(str) {
-      return str === '*';
-    });
-  });
-  return new World(width, height, generation, state);
+  var size = lines[1].split(' ').map(Number);
+  var state = lines.slice(2).map(line => line.split('').map(str => str === '*'));
+  return new World(size[1], size[0], Number(gen[1]), state);
 };
 
 /**
