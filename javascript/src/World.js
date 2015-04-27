@@ -1,19 +1,10 @@
-var Cell = require('./Cell');
+import Cell from './Cell';
 
-module.exports = World;
-
-function World(width, height, generation, initialState) {
+export default function World(width, height, generation, initialState) {
   this.width = width;
   this.height = height;
   this.generation = generation || 1;
-
-  var that = this;
-  this.rows = create(height, function(y) {
-    return create(width, function(x) {
-      return new Cell(x, y, that);
-    });
-  });
-  // this.rows = create(height, y => create(width, x => new Cell(x, y, this)));
+  this.rows = create(height, y => create(width, x => new Cell(x, y, this)));
 
   if (initialState !== undefined) {
     this.setState(initialState);

@@ -1,6 +1,4 @@
-module.exports = Cell;
-
-function Cell(x, y, world) {
+export default function Cell(x, y, world) {
   this.x = x;
   this.y = y;
   this.alive = false;
@@ -19,10 +17,15 @@ Cell.prototype.getLivingNeighbours = function() {
  */
 Cell.prototype.next = function() {
   var neighbours = this.getLivingNeighbours();
+
   if (this.alive && (neighbours < 2 || neighbours > 3)) {
     this.alive = false;
-  } else if (!this.alive && neighbours === 3) {
-    this.alive = true;
+    return this;
   }
+  if (!this.alive && neighbours === 3) {
+    this.alive = true;
+    return this;
+  }
+
   return this;
 };
