@@ -27,7 +27,7 @@ describe("World", function() {
     expect(world.toString()).toBe('Generation 1:\n3 3\n...\n.*.\n...');
   });
 
-  it("loads the state from text and calculates the next generation", function() {
+  it("loads the state from text", function() {
     var world = World.fromString('Generation 1:\n\
 4 8\n\
 ........\n\
@@ -44,26 +44,25 @@ describe("World", function() {
 
   it("doesn't mix up old and new state when iterating", function() {
     var world = World.fromString('Generation 1:\n\
-4 8\n\
-...*....\n\
-....*...\n\
-..***...\n\
-........').next();
+4 4\n\
+.*..\n\
+..*.\n\
+***.\n\
+....').next();
     expect(world.toString()).toBe('Generation 2:\n\
-4 8\n\
-........\n\
-..*.*...\n\
-...**...\n\
-...*....');
+4 4\n\
+....\n\
+*.*.\n\
+.**.\n\
+.*..');
   });
 
   it("loads worlds that are bigger than the actual string", function() {
     var world = World.fromString('Generation 1:\n\
 40 40\n\
-.*......\n\
-..*.....\n\
-***.....\n\
-........').next();
+.*.\n\
+..*\n\
+***').next();
   });
 
 });
