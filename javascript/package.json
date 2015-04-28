@@ -6,6 +6,9 @@
   "scripts": {
     "test": "make test"
   },
+  "dependencies": {
+    "cajon": "^0.2.8"
+  },
   "devDependencies": {
     "babel": "^5.1.13",
     "jasmine": "^2.2.1"
