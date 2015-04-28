@@ -82,7 +82,13 @@ World.prototype.setState = function(state) {
 
 World.prototype.next = function() {
   this.generation++;
-  this.rows.forEach(row => row.forEach(cell => cell.next()));
+
+  var neighbours = this.rows.map(row => row.map(cell => {
+    return this.getNeighbours(cell).filter(cell => cell.alive).length;
+  }));
+
+  this.rows.forEach((row, y) => row.forEach((cell, x) => cell.next(neighbours[y][x])));
+
   return this;
 };
 

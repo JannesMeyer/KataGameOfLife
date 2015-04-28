@@ -42,4 +42,19 @@ describe("World", function() {
 ........');
   });
 
+  it("doesn't mix up old and new state when iterating", function() {
+    var world = World.fromString('Generation 1:\n\
+4 8\n\
+...*....\n\
+....*...\n\
+..***...\n\
+........').next();
+    expect(world.toString()).toBe('Generation 2:\n\
+4 8\n\
+........\n\
+..*.*...\n\
+...**...\n\
+...*....');
+  });
+
 });

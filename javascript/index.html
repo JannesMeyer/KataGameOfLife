@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Conway's Game of Life</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="node_modules/cajon/cajon.js"></script>
+  <script>
+var cellSize = 10;
+var world, ctx;
+
+require([ 'build/World.js', 'build/Cell.js' ], function(World, Cell) {
+  ctx = document.getElementById('main').getContext('2d');
+  ctx.fillStyle = '#000';
+  world = World.fromString('Generation 1:\n\
+5 8\n\
+........\n\
+....*...\n\
+.....*..\n\
+...***..\n\
+........');
+  animate();
+});
+
+function animate() {
+  draw();
+  console.log('Calculating the next generation');
+  world.next();
+  setTimeout(animate, 1000);
+}
+
+function draw() {
+  ctx.clearRect(0, 0, 800, 600);
+  for (var i = 0; i < world.rows.length; i++) {
+    var cells = world.rows[i];
+    for (var j = 0; j < cells.length; j++) {
+      var cell = cells[j];
+      if (cell.alive) {
+        ctx.fillRect(cell.x * cellSize, cell.y * cellSize, cellSize, cellSize);
+      }
+    }
+  }
+}
+  </script>
+</head>
+<body>
+	<canvas id="main" width="800" height="600" style="background: #eee"></canvas>
+</body>
+</html>
