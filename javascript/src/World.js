@@ -77,7 +77,9 @@ World.prototype.getNeighbours = function({ x, y }) {
 };
 
 World.prototype.setState = function(state) {
-  this.rows.forEach((row, y) => row.forEach((cell, x) => cell.alive = state[y][x]));
+  this.rows.forEach((row, y) => row.forEach((cell, x) => {
+    return cell.alive = state.hasOwnProperty(y) && state[y][x];
+  }));
 };
 
 World.prototype.next = function() {

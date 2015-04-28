@@ -57,4 +57,13 @@ describe("World", function() {
 ...*....');
   });
 
+  it("loads worlds that are bigger than the actual string", function() {
+    var world = World.fromString('Generation 1:\n\
+40 40\n\
+.*......\n\
+..*.....\n\
+***.....\n\
+........').next();
+  });
+
 });
